@@ -1,0 +1,20 @@
+<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-80 mx-auto mt-20">
+    <h2 class="text-2xl font-bold mb-6 text-center">Iniciar Sesión</h2>
+    
+    <div *ngIf="!showCodeSection">
+        <input type="tel" [(ngModel)]="phoneNumber" placeholder="Número de Teléfono" class="border border-gray-300 p-2 rounded w-full mb-4" required>
+        <button (click)="sendVerificationCode()" class="bg-blue-500 text-white p-2 rounded w-full">Enviar Código</button>
+    </div>
+    
+    <div *ngIf="showCodeSection">
+        <input type="text" [(ngModel)]="verificationCode" placeholder="Código de Verificación" class="border border-gray-300 p-2 rounded w-full mb-4" required>
+        <button (click)="verifyCode()" class="bg-green-500 text-white p-2 rounded w-full">Verificar Código</button>
+    </div>
+
+    <div *ngIf="message" class="mt-4 text-center text-red-500">{{ message }}</div>
+
+    <p class="mt-4 text-sm text-center text-gray-600">
+        ¿No tienes una cuenta? 
+        <a (click)="routingService.navigateTo('/register')" class="text-blue-500 hover:underline">Regístrate aquí</a>
+      </p>
+</div>
